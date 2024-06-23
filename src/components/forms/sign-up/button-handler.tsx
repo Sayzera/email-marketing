@@ -17,6 +17,7 @@ function ButtonHandler({ }: Props) {
   const { isDirty: isName } = getFieldState('fullname', formState)
   const { isDirty: isEmail } = getFieldState('email', formState)
   const { isDirty: isPassword } = getFieldState('password', formState)
+
   if (currentStep === 3) {
     return (
       <div className='w-full flex flex-col gap-3 items-center'>
@@ -33,6 +34,37 @@ function ButtonHandler({ }: Props) {
       </div>
     )
   }
+
+  if (currentStep === 2) {
+    return (
+      <div className='w-full flex flex-col gap-3 items-center'>
+        <Button
+          type='submit'
+          className='w-full'
+          {
+          ...(isName &&
+            isEmail &&
+            isPassword && {
+            onClick: () => {
+              onGenerateOTP(
+                getValues('email'),
+                getValues('password'),
+                setCurrentStep
+              )
+            }
+          }
+          )
+          }
+        >
+          Devam Et
+        </Button>
+        <p>
+        Hesabın var mı?{' '}
+        <Link href="/auth/sign-in" className='font-bold'>Giriş Yap </Link>
+      </p>
+      </div>
+    )
+  }
   return (
     <div className='w-full flex flex-col gap-3 items-center'>
       <Button type='submit'
@@ -43,7 +75,7 @@ function ButtonHandler({ }: Props) {
       </Button>
       <p>
         Hesabın var mı?{' '}
-        <Link href="/auth/sign-in" className='font-bold'>Giriş Yap</Link>
+        <Link href="/auth/sign-in" className='font-bold'>Giriş Yap </Link>
       </p>
 
     </div>

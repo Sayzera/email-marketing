@@ -24,7 +24,7 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z.
             .email({ message: 'Geçersiz email formatı girdiniz' }),
         confirmEmail: z
             .string()
-            .email(),
+            .email({ message: 'Geçersiz email formatı girdiniz' }),
         password: z
             .string()
             .min(8, { message: 'Şifreniz en az 8 karekter olmalıdır.' })
