@@ -50,16 +50,18 @@ type UserRegistrationProps = {
     {
       id: '1',
       inputType: 'input',
-      placeholder: 'Enter your email',
+      placeholder: 'E-Posta adresinizi giriniz',
       name: 'email',
       type: 'email',
+      label: 'E-Posta'
     },
     {
       id: '2',
       inputType: 'input',
-      placeholder: 'Password',
+      placeholder: '******',
       name: 'password',
       type: 'password',
+      label: 'Şifre'
     },
   ]
   

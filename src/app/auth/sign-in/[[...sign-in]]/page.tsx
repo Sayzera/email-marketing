@@ -1,4 +1,5 @@
 import SignInFormProvider from "@/components/forms/sign-in/form-provider";
+import LoginForm from "@/components/forms/sign-in/login-form";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -17,7 +18,7 @@ export default function Page() {
                 Gönder
               </Button>
               <p>
-                Hesabınız yok mu?
+                Hesabınız yok mu?{' '}
                 <Link
                   href={'/auth/sign-up'}
                   className="font-bold"

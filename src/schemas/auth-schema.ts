@@ -13,6 +13,11 @@ export type UserRegistrationProps = {
     otp: string;
 }
 
+export type UserLoginProps = {
+    email: string;
+    password: string;
+}
+
 export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z.
     object({
         type: z.string().min(1),
@@ -46,4 +51,16 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z.
     .refine((schema) => schema.email === schema.confirmEmail, {
         message: 'E-posta adresleriniz eşleşmiyor',
         path: ['confirmEmail']
-    }) 
+    })
+
+export const UserLoginSchema: ZodType<UserLoginProps> = z.object({
+    email: z.string().email({ message: 'Lütfen uygun formatta e-Posta adresi girininiz' }),
+    password: z
+        .string()
+        .min(8, {
+            message: 'Şifreniz en az 8 karakter olmalıdır.'
+        })
+        .max(64, {
+            message: 'Şifreniz 64 karekteri geçemez.'
+        })
+})
