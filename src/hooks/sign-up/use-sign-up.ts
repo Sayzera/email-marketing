@@ -45,9 +45,10 @@ export const useSignUpForm = () => {
 
             onNext((prev) => prev + 1)
         } catch (error: any) {
+
             toast({
                 title: 'Error',
-                description: error.errors[0].longMessage
+                description: error.errors[0].longMessage ??  error.errors[0].message 
             })
         }
     }

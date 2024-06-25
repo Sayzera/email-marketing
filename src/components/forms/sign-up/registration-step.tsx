@@ -8,6 +8,11 @@ import { Spinner } from '@/components/spinner';
 
 type Props = {}
 
+const OTPForm = dynamic(() => import('./otp-form'), {
+    ssr:false,
+    loading: () => <Spinner />
+})
+
 const DetailForm = dynamic(() => import('./account-detail-form'), {
     ssr: false,
     loading: () => <Spinner />
@@ -21,9 +26,9 @@ function RegistrationFormStep({ }: Props) {
     } = useFormContext();
 
     const { currentStep } = useAuthContextHook();
-    const [onOPT, setOnOTP] = useState<string>('');
+    const [onOTP, setOnOTP] = useState<string>('');
     const [onUserType, setOnUserType] = useState<'owner' | 'student'>('owner')
-    setValue('otp', onOPT)
+    setValue('otp', onOTP)
 
 
     switch (currentStep) {
@@ -40,6 +45,13 @@ function RegistrationFormStep({ }: Props) {
             />
 
         case 3:
+            return (
+                <OTPForm
+                     onOTP={onOTP}
+                     setOTP={setOnOTP}
+
+                />
+            )
     }
 
 
