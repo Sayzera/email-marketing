@@ -22,9 +22,14 @@ export default function RootLayout({
     <ClerkProvider localization={trTR}>
       <html lang="en">
         <body className={jakarta.className}>
-          <ThemeProvider>
-          {children}
-          <Toaster />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme='light'
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster />
 
           </ThemeProvider>
         </body>
